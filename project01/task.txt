@@ -1,0 +1,30 @@
+REST API - html RETURN
+
+GET/ USER - RETURNS ALL USER                  //Done
+GET/ USER/ 1 - RETURNS USER WITH ID = 1       //Done
+GET/ USER/ 2 - RETURNS USER WITH ID = 2       //Done
+
+Dynamic path parameters are - 1, 2            //Done
+
+Represented as GET/ USER/ :id                 //Done
+
+POST/ USER - CREATE USER AND ASSIGN ID
+
+PATCH/ USER/ ID - UPDATE INFORMATION OF USER WITH ID 
+
+DELETE/ USER/ ID - DELETE USER WITH ID 
+
+
+///////////////////////////////////////////////////////
+
+REST API - API RETURN (For other platforms other than web as it can not render html)
+
+GET/api/ USER - RETURNS ALL USER                  //Done
+GET/api/ USER/ 1 - RETURNS USER WITH ID = 1
+GET/api/ USER/ 2 - RETURNS USER WITH ID = 2
+
+POST/api/ USER - CREATE USER AND ASSIGN ID
+
+PATCH/api/ USER/ ID - UPDATE INFORMATION OF USER WITH ID 
+
+DELETE/api/ USER/ ID - DELETE USER WITH ID 
