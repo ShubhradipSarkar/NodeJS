@@ -57,48 +57,15 @@ app.route("/api/users/:id")
     if (!UserById) return res.status(404).json({error: "User by this id not found"});
     return res.json(UserById);
 })
-.patch((req, res)=>{
+.patch(async(req, res)=>{
     // Put 
-    const id = Number(req.params.id);
-    const updatedUser = req.body;
-
-    // Find the index of the user with the given ID
-    const index = users.findIndex((user) => user.id === id);
-
-    // If the user with the given ID is found, update its properties
-    if (index !== -1) {
-        users[index] = { ...users[index], ...updatedUser };
-
-        // Save the updated data to the JSON file
-        fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err) => {
-            if (err) {
-                return res.status(500).json({ status: "error", message: "Failed to update user" });
-            }
-            return res.json({ status: "success", message: "User updated successfully" });
-        });
-    } else {
-        return res.status(404).json({ status: "error", message: "User not found" });
-    }
+    await User.findByIdAndUpdate(req.params.id, {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email})
+    return res.status(202).json({words: "all good"});
 })
-.delete((req, res)=>{
+.delete(async(req, res)=>{
     // Delete
-    const id = Number(req.params.id);
-    // Filter out the user with the given ID
-    const filteredUsers = users.filter((user) => user.id !== id);
-
-    // If the length changes, the user was found and deleted
-    if (filteredUsers.length < users.length) {
-        // Save the updated data to the JSON file
-        fs.writeFile("./MOCK_DATA.json", JSON.stringify(filteredUsers), (err) => {
-            if (err) {
-                return res.status(500).json({ status: "error", message: "Failed to delete user" });
-            }
-            return res.json({ status: "success", message: "User deleted successfully" });
-        });
-    } else {
-        return res.status(404).json({ status: "error", message: "User not found" });
-    }
-    
+    const UserToDelete = await User.findByIdAndDelete(req.params.id);
+    return res.json({msg: "success"});
 });
 
 // Posting a new user to the data
