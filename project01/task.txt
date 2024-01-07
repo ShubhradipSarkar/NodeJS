@@ -1,4 +1,4 @@
-REST API - html RETURN
+*** REST API - html RETURN
 
 GET/ USER - RETURNS ALL USER                  //Done
 GET/ USER/ 1 - RETURNS USER WITH ID = 1       //Done
@@ -28,3 +28,16 @@ POST/api/ USER - CREATE USER AND ASSIGN ID
 PATCH/api/ USER/ ID - UPDATE INFORMATION OF USER WITH ID 
 
 DELETE/api/ USER/ ID - DELETE USER WITH ID 
+
+
+
+
+*** MiddleWares
+
+they are checking layers between server and client
+
+client ----> MiddleWare-1 ----> MiddleWare-2 ----> server
+  ^                                                  |
+  ----<------<--------<----------<-------------<------
+
+  code MiddleWares
